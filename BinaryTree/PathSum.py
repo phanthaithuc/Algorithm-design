@@ -18,10 +18,12 @@ def pathsum(root: TreeNode, value):
 
 
     postorder(root, sum1)
-    if value in h:
-        return True
-    else:
-        return False
+    # if value in h:
+    #     return True
+    # else:
+    #     return False
+
+    return max(h)
 
 def pathsum1(root: TreeNode, sum):
     if not root:
@@ -43,4 +45,5 @@ if __name__ == "__main__":
 
     print(pathsum1(tree2, 22))
     print(pathsum(tree2, 22))
+
 
