@@ -29,7 +29,7 @@ class Solution:
             j+=1
         return res
 
-if __name__== "__main__"
+if __name__== "__main__":
     nums = [2,11,15,7]
     nums2 = [3,2,4,5]
     solution = Solution(nums2)

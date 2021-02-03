@@ -47,4 +47,4 @@ if __name__ == "__main__":
 
     t = Node(3, Node(1), Node(2))
 
-    print(bfs(t))
+    print(bfs(a))

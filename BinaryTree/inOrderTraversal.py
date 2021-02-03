@@ -13,7 +13,6 @@ def inOrder(root):
     current = root
     stack = []  # initialize stack
     res = []
-    done = 0
 
     while True:
 
@@ -23,10 +22,9 @@ def inOrder(root):
             # Place pointer to a tree node on the stack
             # before traversing the node's left subtree
             stack.append(current)
-
             current = current.left
 
-            # BackTrack from the empty subtree and visit the Node
+        # BackTrack from the empty subtree and visit the Node
         # at the top of the stack; however, if the stack is
         # empty you are done
         elif stack:
