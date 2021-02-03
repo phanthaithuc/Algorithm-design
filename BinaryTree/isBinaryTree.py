@@ -91,7 +91,7 @@ def inOrderRecursive(root: Node):
 def deleteNode(root: Node, value):
     if root is None:
         print("Node not found")
-        return -1
+        return root
 
     if root.val == value:
 

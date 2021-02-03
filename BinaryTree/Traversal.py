@@ -108,7 +108,6 @@ class TreeTraversal:
             res.append(row)
         return res, height
 
-
     def levelOrder(self, root: TreeNode):
         if root is None:
             return
@@ -125,11 +124,10 @@ class TreeTraversal:
             temp = q.popleft()
             res.append(temp.val)
 
-
         return res
 
-#Preorder <root> <left> <right>
-#Preorder is Depth First Search
+    # Preorder <root> <left> <right>
+    # Preorder is Depth First Search
     def PreOrderIterative(self, root: TreeNode):
         stack = collections.deque()
         stack.append(root)
@@ -143,8 +141,12 @@ class TreeTraversal:
             res.append(curr.val)
         return res
 
-
-
+    def print_tree(self, root: TreeNode, level=0):
+        if not root:
+            return
+        self.print_tree(root.right, level + 1)
+        print('  ' * 4 * level + '     --> ', root.val)
+        self.print_tree(root.left, level + 1)
 
 
 if __name__ == "__main__":
@@ -152,7 +154,7 @@ if __name__ == "__main__":
                     TreeNode('G', None, TreeNode('I', TreeNode('H'))))
 
     tree_2 = TreeNode("F", TreeNode("B", TreeNode("A"), TreeNode("D", TreeNode("C"), TreeNode("E"))),
-                    TreeNode("G", TreeNode("T"), TreeNode("I", TreeNode("H"))))
+                      TreeNode("G", TreeNode("T"), TreeNode("I", TreeNode("H"))))
     travel = TreeTraversal()
     print("InOrder Recursive: ")
     travel.InOrder(tree_2)
@@ -174,3 +176,6 @@ if __name__ == "__main__":
     value, height = travel.levelValue(tree)
     print("\n Value of each level tree:", value)
     print('\n Height of the tree: ', len(value))
+    travel.print_tree(tree)
+
+
