@@ -64,9 +64,10 @@ class TreeTraversal:
 
     def findHeight(self, root: TreeNode):
         if root is None:
-            return -1
+            return 0
         leftHeight = self.findHeight(root.left) + 1
         rightHeight = self.findHeight(root.right) + 1
+        print(leftHeight)
         return max(leftHeight, rightHeight)
         # return max(self.findHeight(root.left), self.findHeight(root.right)) + 1
 
@@ -156,26 +157,27 @@ if __name__ == "__main__":
     tree_2 = TreeNode("F", TreeNode("B", TreeNode("A"), TreeNode("D", TreeNode("C"), TreeNode("E"))),
                       TreeNode("G", TreeNode("T"), TreeNode("I", TreeNode("H"))))
     travel = TreeTraversal()
-    print("InOrder Recursive: ")
-    travel.InOrder(tree_2)
-    print("InOrder Intensive: ")
-    travel.InOrderIntensive(tree_2)
-
-    print("PostOrder Recursive: ")
-    travel.PostOrder(tree_2)
-
-    print("PreOrder Recursive: ")
-    travel.PreOrder(tree_2)
-    res = travel.PreOrderIterative(tree_2)
-    print("Preorder Intensive:", res)
-
-    print("Height of the tree: ", travel.findHeight(tree_2))
-    print("Level Order tree: ")
-    print(travel.levelOrder(tree_2))
-    print('\n Row level of value: ')
-    value, height = travel.levelValue(tree)
-    print("\n Value of each level tree:", value)
-    print('\n Height of the tree: ', len(value))
+    # print("InOrder Recursive: ")
+    # travel.InOrder(tree_2)
+    # print("InOrder Intensive: ")
+    # travel.InOrderIntensive(tree_2)
+    #
+    # print("PostOrder Recursive: ")
+    # travel.PostOrder(tree_2)
+    #
+    # print("PreOrder Recursive: ")
+    # travel.PreOrder(tree_2)
+    # res = travel.PreOrderIterative(tree_2)
+    # print("Preorder Intensive:", res)
+    #
+    # print("Height of the tree: ", travel.findHeight(tree_2))
+    # print("Level Order tree: ")
+    # print(travel.levelOrder(tree_2))
+    # print('\n Row level of value: ')
+    # value, height = travel.levelValue(tree)
+    # print("\n Value of each level tree:", value)
+    # print('\n Height of the tree: ', len(value))
     travel.print_tree(tree)
-
+    travel.findHeight(tree)
+    #travel.PostOrder(tree)
 
