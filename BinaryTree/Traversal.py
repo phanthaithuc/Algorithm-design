@@ -165,10 +165,10 @@ if __name__ == "__main__":
     # print("PostOrder Recursive: ")
     # travel.PostOrder(tree_2)
     #
-    # print("PreOrder Recursive: ")
-    # travel.PreOrder(tree_2)
-    # res = travel.PreOrderIterative(tree_2)
-    # print("Preorder Intensive:", res)
+    print("PreOrder Recursive: ")
+    travel.PreOrder(tree_2)
+    res = travel.PreOrderIterative(tree_2)
+    print("Preorder Intensive:", res)
     #
     # print("Height of the tree: ", travel.findHeight(tree_2))
     # print("Level Order tree: ")
@@ -178,6 +178,5 @@ if __name__ == "__main__":
     # print("\n Value of each level tree:", value)
     # print('\n Height of the tree: ', len(value))
     travel.print_tree(tree)
-    travel.findHeight(tree)
     #travel.PostOrder(tree)
 

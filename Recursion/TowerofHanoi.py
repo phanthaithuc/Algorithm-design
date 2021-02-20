@@ -7,5 +7,5 @@ def TowerOfHanoi(n, from_rod, to_rod, aux_rod):
     TowerOfHanoi(n - 1, aux_rod, to_rod, from_rod)
 
 
-n  = 4
+n  = 30
 TowerOfHanoi(n, 'A', 'B', 'C')

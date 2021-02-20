@@ -1,21 +1,49 @@
 import collections
+from Traversal import TreeTraversal
 
 
-class Node:
+class Node(TreeTraversal):
     def __init__(self, val):
         self.val = val
         self.left = None
         self.right = None
+        super(Node, self).__init__()
+
+
+def deleteNode(root: Node, value):
+    if root is None:
+        print("Node not found")
+        return root
+
+    if root.val == value:
+
+        # Node has right child or left child:
+        if not root.right or not root.left:
+            root = root.left if root.left else root.right
+
+        # Node node has both right and left child:
+        else:
+            curr = root.right
+            while curr.left:
+                curr = curr.left
+            root.val = curr.val
+            root.right = deleteNode(root.right, curr.val)
+
+    elif value > root.val:
+        root.right = deleteNode(root.right, value)
+    elif value < root.val:
+        root.left = deleteNode(root.left, value)
+
+    return root
 
 
 def inOrder(root: Node):
-    current_node = root
-    stack = collections.deque()
-    stack.append(current_node)
+    if not root:
+        return
+    inOrder(root.left)
+    print(root.val)
+    inOrder(root.right)
 
-    while stack:
-        if current_node.left is not None:
-            stack.append(current_node.left)
 
 
 if __name__ == "__main__":
@@ -27,3 +55,7 @@ if __name__ == "__main__":
     tree.right.left = Node(13)
     tree.right.right = Node(17)
     tree.right.right.right = Node(19)
+    #deleteNode(tree, 19)
+    inOrder(tree)
+    # tree_1 = Node(56, Node(30, Node(22, Node(11, Node(3), Node(16)), Node(40))), Node(70, Node(60, Node(65, Node(63), Node(67))), Node(95)))
+    tree.print_tree(tree)

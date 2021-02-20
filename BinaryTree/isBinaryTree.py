@@ -114,6 +114,18 @@ def deleteNode(root: Node, value):
 
     return root
 
+def insertNode(root: Node, key) -> Node:
+    if not root:
+        return Node(key)
+    if key > root.val:
+        root.right = insertNode(root.right, key)
+    elif key <= root.val:
+        root.left = insertNode(root.left, key)
+    return root
+
+
+
+
 
 #      7
 #    /   \
@@ -129,8 +141,10 @@ if __name__ == "__main__":
     # print(recursive(tree))
     #
     # print(isBST(tree_dup))
+    # inOrderRecursive(tree)
+    # deleteNode(tree, 555)
+    insertNode(tree, 10)
     inOrderRecursive(tree)
-    deleteNode(tree, 555)
-    inOrderRecursive(tree)
+
 
 

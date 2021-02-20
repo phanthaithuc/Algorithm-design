@@ -58,4 +58,3 @@ if __name__ == "__main__":
     tree = BSTSortedOrder(nums)
     printnode(tree)
     treelevel(tree)
-;l
