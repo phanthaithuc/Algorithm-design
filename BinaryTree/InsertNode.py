@@ -58,7 +58,7 @@ def print_node(root: Node, level=0):
     printnode(root.right)
 
 
-# Lowest commend ancestor
+# Lowest common ancestor
 
 def lca(root: Node, a: Node, b: Node) -> Node:
     if not root:

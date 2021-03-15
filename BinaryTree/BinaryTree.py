@@ -1,5 +1,5 @@
 class TreeNode:
-    def __init__(self,  val,  right=None, left=None):
+    def __init__(self, val, right=None, left=None):
         self.val = val
         self.left = left
         self.right = right
@@ -41,16 +41,13 @@ def printnode(root: TreeNode, level=0):
     printnode(root.left, level + 1)
 
 
-def treelevel(root: TreeNode, level = 0):
+def treelevel(root: TreeNode, level=0):
     if not root:
         return
     treelevel(root.right, level + 1)
     print("right level = ", level)
     treelevel(root.left, level + 1)
     print("left level = ", level)
-
-
-
 
 
 if __name__ == "__main__":

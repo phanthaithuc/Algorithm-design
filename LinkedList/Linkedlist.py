@@ -1,7 +1,8 @@
 class Node:
-    def __init__(self, data=None, next=None):
+    def __init__(self, data=None, next=None, random=None):
         self.data = data
         self.next = next
+        self.random = random
 
 
 class MyLinkedList:
