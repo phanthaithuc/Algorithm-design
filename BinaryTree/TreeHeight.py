@@ -1,11 +1,15 @@
 from Traversal import TreeNode
 
+
 def tree_height(root: TreeNode):
     if not root:
         return -1
     else:
         left_height = tree_height(root.left)
         right_height = tree_height(root.right)
+
+    return max(left_height, right_height) + 1
+
 
 def depth(root: TreeNode) -> int:
     if not root:
@@ -31,4 +35,3 @@ if __name__ == "__main__":
     tree2 = TreeNode(5, TreeNode(4, TreeNode(11, TreeNode(7), TreeNode(2))),
                      TreeNode(8, TreeNode(13), TreeNode(4, None, TreeNode(1))))
     print(tree_height(tree2))
-    print(depth(tree2))
