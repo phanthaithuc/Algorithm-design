@@ -24,8 +24,10 @@ class TreeTraversal:
     def InOrder(self, root: TreeNode):
         if root is None:
             return
+        res = []
         self.InOrder(root.left)
         print(root.val)
+        res.append(root.val)
         self.InOrder(root.right)
 
     # Inorder:
@@ -158,7 +160,7 @@ if __name__ == "__main__":
                       TreeNode("G", TreeNode("T"), TreeNode("I", TreeNode("H"))))
     travel = TreeTraversal()
     # print("InOrder Recursive: ")
-    # travel.InOrder(tree_2)
+    travel.InOrder(tree_2)
     # print("InOrder Intensive: ")
     # travel.InOrderIntensive(tree_2)
     #

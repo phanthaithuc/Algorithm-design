@@ -1,6 +1,6 @@
 ##################################################################################################
-#Program: Docbao Rabbitmq Client                                                                 #
-#Function: Get crawled posts through RabbitMQ                                                    #
+# Program: Docbao Rabbitmq Client                                                                 #
+# Function: Get crawled posts through RabbitMQ                                                    #
 ##################################################################################################
 
 """HOW TO USE
@@ -30,9 +30,10 @@ PORT = 19000
 USERNAME = 'admin'
 PASSWORD = 'omah7Eecaht7ooqu'
 EXCHANGE = 'docbao_tech_protect'
-POST_QUEUE = 'tech_protect_AI' # queue to bind to get posts
-MAX_POST = 5 # number of post to push each queue
+POST_QUEUE = 'tech_protect_AI'  # queue to bind to get posts
+MAX_POST = 5  # number of post to push each queue
 WAIT_BETWEEN_POST = 0.5
+
 
 class Post():
     """Represent a crawled article"""
@@ -71,10 +72,11 @@ class Post():
         pass
 
     has_error = False
+
     def __init__(self, body):
         """Parsing binary data to make Post instance"""
         try:
-            self._body = body # byte data
+            self._body = body  # byte data
             unicode_body = str(body, encoding="utf-8")
             self._data = jsonpickle.decode(unicode_body)
             if 'tag' in self._data:
@@ -129,7 +131,7 @@ class Post():
             return self._data['featureImages']
 
     def set_dummy_image(self):
-        self._data['featureImages'] = [{'small':DUMMY_IMAGE, 'large': DUMMY_IMAGE}]
+        self._data['featureImages'] = [{'small': DUMMY_IMAGE, 'large': DUMMY_IMAGE}]
 
     def get_publish_date(self):
         return self._data['publish_date']
@@ -139,7 +141,6 @@ class Post():
 
     def set_create_date(self, value):
         self._data['createdAt'] = value
-
 
     def get_categories(self):
         return self._data['categories']
@@ -157,7 +158,7 @@ class Post():
             return None
 
     def validate(self):
-        if self.has_error: #parse json unsuccesfully
+        if self.has_error:  # parse json unsuccesfully
             return False
 
         # validate id
@@ -187,7 +188,7 @@ class Post():
         # validate title
         if self.get_displayType() not in [0, 1]:
             return False
-        elif self.get_displayType() == 0: # newspaper
+        elif self.get_displayType() == 0:  # newspaper
             if not isinstance(self.get_title(), str):
                 print("Wrong title")
                 return False
@@ -240,7 +241,7 @@ class Post():
                         elif item['type'] == 'text' and 'content' not in item:
                             print("Lack content in news format. Use dummy content")
                             item['content'] = "Dummy content"
-            else: # content must be a string
+            else:  # content must be a string
                 if not isinstance(content, str):
                     print("Wrong social content format")
                     return False
@@ -281,7 +282,7 @@ def get_data_from_rabbitmq():
     # connect to RabbitMQ
     # login
     credentials = pika.PlainCredentials(USERNAME, PASSWORD)
-    parameters = pika.ConnectionParameters(HOST, PORT,'/', credentials)
+    parameters = pika.ConnectionParameters(HOST, PORT, '/', credentials)
     connection = pika.BlockingConnection(parameters)
 
     exchange = EXCHANGE
@@ -300,23 +301,23 @@ def get_data_from_rabbitmq():
     # get message
     count_post = 0
     posts = []
-    while (queue_length >= 1 and count_post<MAX_POST):
+    while queue_length >= 1 and count_post < MAX_POST:
         method, properties, body = channel.basic_get(queue, auto_ack=True)
 
         if body is not None:
             posts.append(body)
-        queue_length -=1
-        count_post +=1
+        queue_length -= 1
+        count_post += 1
 
     # parse message into Post and push to database
     count_post = 0
     for body in posts:
-        count_post+=1
+        count_post += 1
         print("Processing post %s: " % str(count_post))
-        #continue
+        # continue
         post = Post(body)
-        if post.validate():         # post is in right format
-            post.push_to_database() # push article to database
+        if post.validate():  # post is in right format
+            post.push_to_database()  # push article to database
             print()
 
     # Close
@@ -327,6 +328,7 @@ def print_exception():
     # Print error message in try..exception
     exec_info = sys.exc_info()
     traceback.print_exception(*exec_info)
+
 
 # MAIN PROGRAM HERE
 if __name__ == '__main__':
@@ -340,4 +342,3 @@ if __name__ == '__main__':
             print("Some error has happened. Sleep 30 seconds")
             sleep(30)
         sleep(15)
-

@@ -45,7 +45,6 @@ def inOrder(root: Node):
     inOrder(root.right)
 
 
-
 if __name__ == "__main__":
     tree = Node(12)
     tree.left = Node(5)
@@ -55,7 +54,7 @@ if __name__ == "__main__":
     tree.right.left = Node(13)
     tree.right.right = Node(17)
     tree.right.right.right = Node(19)
-    #deleteNode(tree, 19)
+    # deleteNode(tree, 19)
     inOrder(tree)
     # tree_1 = Node(56, Node(30, Node(22, Node(11, Node(3), Node(16)), Node(40))), Node(70, Node(60, Node(65, Node(63), Node(67))), Node(95)))
     tree.print_tree(tree)

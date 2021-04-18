@@ -19,8 +19,8 @@ def TowerOfHanoi(n, source, destination, auxiliary):
 
 
 current_time = time.time()
-n = 30
+n = 25
 if __name__ == "__main__":
     opt = get_arg()
-    TowerOfHanoi(opt.nums, 'A', 'C', 'B')
+    TowerOfHanoi(30, 'A', 'C', 'B')
     print("Code run in : ", round(time.time() - current_time, 2), 's')

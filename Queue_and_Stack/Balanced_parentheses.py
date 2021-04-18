@@ -2,7 +2,8 @@ def balance_parentheses(expression: str) -> bool:
     open_tup = tuple('({[')
     close_tup = tuple(')}]')
     queue = []
-    map = dict(zip(open_tup, close_tup))
+    # create hash table with 2 tuples, zip 2 tuple together, open_tup as key, close_tup as value
+    map = dict(zip(open_tup, close_tup)) #create hash table with 2 tuples, zip 2 tuple together, open_tup as key, close_tup as value
 
     for i in expression:
         if i in open_tup:
