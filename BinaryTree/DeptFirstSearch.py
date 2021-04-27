@@ -14,12 +14,19 @@ class TreeNode:
 #   /   \       \
 # d      e        f
 
-def preOrder(root : TreeNode):
-    if root == None:
-        return 0
-    print(root.value)
-    preOrder(root.left)
-    preOrder(root.right)
+def preOrder(root: TreeNode):
+    res = []
+
+    def travel(root):
+        if not root:
+            return 0
+        res.append(root.value)
+        preOrder(root.left)
+        preOrder(root.right)
+
+    travel(root)
+
+    return res
 
 
 if __name__ == "__main__":
@@ -36,4 +43,4 @@ if __name__ == "__main__":
     b.right = e
     c.right = f
 
-    preOrder(a)
+    print(preOrder(a))

@@ -13,4 +13,5 @@ def canSum(targetSum, numbers: []):
 
 
 numbers = [3,5,7]
-print(canSum(7, numbers))
+print(canSum(7, [2,3,6,7]))
+
