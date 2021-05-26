@@ -1,4 +1,6 @@
 import numpy as np
+
+
 def longestCommonSubsequence(str1: str, str2: str) -> int:
     dp = [[0 for x in range(len(str2) + 1)] for y in range(len(str1) + 1)]
     for i in range(len(str1) - 1, -1, -1):
@@ -22,4 +24,4 @@ if __name__ == "__main__":
     # matrix[1][1] = 2
     # print(matrix)
 
-    longestCommonSubsequence(text1, text2)
+    print(longestCommonSubsequence(text1, text2))

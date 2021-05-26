@@ -7,11 +7,9 @@ def meetingRoom(intervals: List[List[int]]) -> int:
     if not intervals:
         return 0
 
-    def get_x(x):
-        print(x[0])
-        return x[0]
-    get_x(intervals)
-    intervals.sort(key=lambda x: x[0])
+   # intervals.sort(key=lambda x: x[0])
+   #  intervals = sorted(intervals, key= lambda x: x[0])
+
     room = [intervals[0][1]]
 
     for meeting in intervals[1:]:

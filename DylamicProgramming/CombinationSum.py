@@ -14,7 +14,7 @@ def CombinationSum(candidate: List[int], target: int) -> List[int]:
                 for blist in res[i - c]:
                     res[i].append(blist + [c])
 
-    return res[target]
+    return len(res[target])
 
 
-print(CombinationSum([1,2,4], 5000))
+print(CombinationSum([1,2,4], 7))

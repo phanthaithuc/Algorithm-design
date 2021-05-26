@@ -2,11 +2,11 @@ from typing import List
 
 
 class Solution(object):
-    def inrange(self, gird, r, c):
-        numRow, numCol = len(grid), len(grid[0])
-        if r < 0 or c < 0 or r >= numRow or c >= numCol:
-            return False
-        return True
+    # def inrange(self, gird, r, c):
+    #     numRow, numCol = len(grid), len(grid[0])
+    #     if r < 0 or c < 0 or r >= numRow or c >= numCol:
+    #         return False
+    #     return True
 
     def mark_visited(self, x: int, y: int, row: int, columns: int, grid: List[List[str]]):
         # if x = 0 or y = 0 (water) or x > row or y > columns (out of grid) or grid[x][y] != 1(already visited)
@@ -37,7 +37,7 @@ class Solution(object):
         return number_of_island
 
 
-def numIslands(self, grid):
+def numIslands(grid):
     """
     :type grid: List[List[str]]
     :rtype: int
